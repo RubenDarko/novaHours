@@ -15,14 +15,14 @@ Given(/^Navigation to Nova page starts$/, async () => {
 When(/^User logs in Nova$/, async () => {
     await browser.wait(EC.elementToBeClickable(nova.userField));
     await nova.userField.sendKeys(USER);
-    await browser.wait(EC.elementToBeClickable(nova.getButtonByValue("Next")));
-    await nova.getButtonByValue("Next").click();
+    await browser.wait(EC.elementToBeClickable(nova.ctrlButton));
+    await nova.ctrlButton.click();
     await browser.wait(EC.elementToBeClickable(nova.passField));
     await nova.passField.sendKeys(PASS);
-    await browser.wait(EC.elementToBeClickable(nova.getButtonByValue("Sign in")));
-    await nova.getButtonByValue("Sign in").click();
-    await browser.wait(EC.elementToBeClickable(nova.getButtonByValue("Yes")));
-    await nova.getButtonByValue("Yes").click();
+    await browser.wait(EC.elementToBeClickable(nova.ctrlButton));
+    await nova.ctrlButton.click();
+    await browser.wait(EC.elementToBeClickable(nova.ctrlButton));
+    await nova.ctrlButton.click();
 });
 
 Then(/^Fill out hours in form$/, async (data) => {

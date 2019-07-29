@@ -10,11 +10,8 @@ export class Nova {
     activityWin  = element(by.xpath("//div[text()='Create Activity']"));
     commentsText = element(by.xpath("//p[contains(text(),'Comments')]/following-sibling::textarea"));
     createButton = element(by.xpath("//button[text()='Create']"));
+    ctrlButton   = element(by.id("idSIButton9"));
     alert        = element(by.id("client-snackbar"));
-
-    public getButtonByValue(buttonValue: String) {
-        return element(by.xpath("//input[@value='" + buttonValue + "']"));
-    }
 
     public getPlusByDay(day: String) {
         return element(by.xpath("//span[text()='" + day + "']/preceding-sibling::span"));
