@@ -13,7 +13,7 @@ export const config: Config = {
         browserName: "chrome",
         "chromeOptions": {
             "args": [
-                //"--headless",
+                "--headless",
                 "--disable-cache",
                 "--disable-infobars",
                 "--window-size=1920,1080",
