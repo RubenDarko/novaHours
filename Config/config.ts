@@ -5,7 +5,6 @@ const jsonReports = process.cwd() + "/Reports/json";
 export const config: Config = {
   
     baseUrl: "https://nova.itexico.com",
-    //seleniumAddress: "http://127.0.0.1:4444/wd/hub",
     directConnect: true,
     SELENIUM_PROMISE_MANAGER: false,
 

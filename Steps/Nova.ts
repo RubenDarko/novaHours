@@ -2,8 +2,8 @@ import { Nova } from "../Pages/Nova";
 import { Given, When, Then } from "cucumber";
 import { Key, protractor, browser } from "protractor";
 
-const USER = "my.email@itexico.com"
-const PASS = "myP455w0rd"
+const USER = "my.email@itexico.com";
+const PASS = "myP455w0rd";
 const EC   = protractor.ExpectedConditions;
 const nova = new Nova();
 
@@ -29,7 +29,7 @@ Then(/^Fill out hours in form$/, async (data) => {
     const rows = data.hashes();
     for (const row of rows) {
         await browser.wait(EC.elementToBeClickable(nova.getPlusByDay(row.Day)));
-        await browser.executeScript("arguments[0].click()", nova.getPlusByDay(row.Day));
+        await browser.executeScript("arguments[0].click();", nova.getPlusByDay(row.Day));
 
         await browser.wait(EC.visibilityOf(nova.activityWin));
 
