@@ -1,6 +1,6 @@
 import { Nova } from "../Pages/Nova";
 import { Given, When, Then } from "cucumber";
-import { protractor, browser } from "protractor";
+import { Key, protractor, browser } from "protractor";
 
 const USER = "my.email@itexico.com"
 const PASS = "myP455w0rd"
@@ -34,7 +34,7 @@ Then(/^Fill out hours in form$/, async (data) => {
         await browser.wait(EC.visibilityOf(nova.activityWin));
 
         await nova.getFieldByName("Project").clear();
-        await nova.getFieldByName("Project").sendKeys(row.Project);
+        await nova.getFieldByName("Project").sendKeys(row.Project + Key.TAB);
 
         await nova.getFieldByName("Categories").clear();
         await nova.getFieldByName("Categories").sendKeys(row.Categories);
