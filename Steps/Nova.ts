@@ -1,4 +1,5 @@
 import { Nova } from "../Pages/Nova";
+import { Jira } from "../Pages/Jira";
 import { Given, When, Then } from "cucumber";
 import { Key, protractor, browser } from "protractor";
 
@@ -6,6 +7,7 @@ const USER = "my.email@itexico.com";
 const PASS = "myP455w0rd";
 const EC   = protractor.ExpectedConditions;
 const nova = new Nova();
+const jira = new Jira();
 
 Given(/^Navigation to Nova page starts$/, async () => {
     await browser.wait(EC.visibilityOf(nova.singInLogo));
@@ -27,6 +29,40 @@ When(/^User logs in Nova$/, async () => {
 
 Then(/^Fill out hours in form$/, async (data) => {
     const rows = data.hashes();
+    /*let jiraTickets:string = "id in (";
+    let novaWindow;
+    let jiraWindow;
+    let comment;
+
+    for (const row of rows) {
+        jiraTickets= jiraTickets + row.Ticket + ",";
+    }
+
+    await browser.executeScript('window.open();');
+    await browser.getAllWindowHandles().then(function (handles) {
+        novaWindow=handles[0];
+        jiraWindow=handles[1];
+    });
+    await browser.switchTo().window(jiraWindow);
+    await browser.get("https://etaluma.atlassian.net/issues/");
+
+    await browser.wait(EC.visibilityOf(jira.loginLink));
+    await jira.loginLink.click();
+
+    await browser.wait(EC.visibilityOf(jira.usernameField));
+    await jira.usernameField.sendKeys(USER);
+    await jira.submitButton.click();
+
+    await browser.wait(EC.visibilityOf(jira.passwordField));
+    await jira.passwordField.sendKeys(PASS);
+    await jira.submitButton.click();
+
+    await browser.wait(EC.visibilityOf(jira.searchField));
+    await jira.searchField.clear();
+    await jira.searchField.sendKeys(jiraTickets + Key.BACK_SPACE + ")" + Key.ENTER);
+
+    await browser.switchTo().window(novaWindow);*/
+
     for (const row of rows) {
         await browser.wait(EC.elementToBeClickable(nova.getPlusByDay(row.Day)));
         await browser.executeScript("arguments[0].click();", nova.getPlusByDay(row.Day));
@@ -46,6 +82,12 @@ Then(/^Fill out hours in form$/, async (data) => {
         await nova.getFieldByName("Ticket").sendKeys(row.Ticket);
 
         await nova.commentsText.clear();
+        /*await browser.switchTo().window(jiraWindow);
+        await jira.getDescriptionByTicket(row.Ticket).getText().then(function (text) {
+            comment=text;
+        });
+        await browser.switchTo().window(novaWindow);
+        await nova.commentsText.sendKeys(comment);*/
         await nova.commentsText.sendKeys(row.Comments);
 
         await browser.wait(EC.elementToBeClickable(nova.createButton));
