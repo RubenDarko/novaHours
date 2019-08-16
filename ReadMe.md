@@ -7,7 +7,9 @@
 
 ### Setup Scripts
 1. npm install
-2. npm run webdriver-update
+2. npm install protractor --save-dev
+3. npm run webdriver-update
+4. node node_modules/protractor/bin/webdriver-manager update
 
 ### Run Sripts
 npm run e2e
