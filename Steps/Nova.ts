@@ -82,13 +82,16 @@ Then(/^Fill out hours in form$/, async (data) => {
         await nova.getFieldByName("Ticket").sendKeys(row.Ticket);
 
         await nova.commentsText.clear();
-        /*await browser.switchTo().window(jiraWindow);
-        await jira.getDescriptionByTicket(row.Ticket).getText().then(function (text) {
-            comment=text;
-        });
-        await browser.switchTo().window(novaWindow);
-        await nova.commentsText.sendKeys(comment);*/
-        await nova.commentsText.sendKeys(row.Comments);
+        /*if (row.Ticket=="Jira") {
+            await browser.switchTo().window(jiraWindow);
+            await jira.getDescriptionByTicket(row.Ticket).getText().then(function (text) {
+                comment=text;
+            });
+            await browser.switchTo().window(novaWindow);
+            await nova.commentsText.sendKeys(comment);
+        }
+        else*/
+            await nova.commentsText.sendKeys(row.Comments);
 
         await browser.wait(EC.elementToBeClickable(nova.createButton));
         await nova.createButton.click();
